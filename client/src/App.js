@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import{ Switch, Route} from 'react-router-dom'
 import './App.css';
+import Home from './home';
+import About from './about';
+// import Navbar from './component/navbar';
 
 class App extends Component {
-  componentDidMount() {
-    fetch('/users')
-    .then(res => res.json())
-    .then(users => console.log(' WHAT ARE THE USERS', users))
-  }
+  constructor(props){
+      super(props);
+      this.state= {
+        users:[]
+      }
+    }
+
+    componentDidMount(){
+
+    }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {/* <Navbar/> */}
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/about' component={About}/>
+        </Switch>
+
       </div>
     );
   }
